@@ -74,8 +74,8 @@ export default function Home() {
   };
 
   /*
-      connectWallet: Connects the MetaMask wallet
-    */
+    connectWallet: Connects the MetaMask wallet
+  */
   const connectWallet = async () => {
     try {
       // Get the provider from web3Modal, which in our case is MetaMask
@@ -149,7 +149,7 @@ export default function Home() {
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
       // call the presaleEnded from the contract
       const _presaleEnded = await nftContract.presaleEnded();
-      // _presaleEnded is a Big Number, so we are using the lt(less than function) instead of `<`
+      // _presaleEnded is a Big Number, so we are using the lt(less than function) insteal of `<`
       // Date.now()/1000 returns the current time in seconds
       // We compare if the _presaleEnded timestamp is less than the current time
       // which means presale has ended
@@ -229,7 +229,7 @@ export default function Home() {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
-    // If user is not connected to the Goerli network, let them know and throw an error
+    // If user is not connected to the Rinkeby network, let them know and throw an error
     const { chainId } = await web3Provider.getNetwork();
     if (chainId !== 5) {
       window.alert("Change the network to Goerli");
@@ -252,7 +252,7 @@ export default function Home() {
       // Assign the Web3Modal class to the reference object by setting it's `current` value
       // The `current` value is persisted throughout as long as this page is open
       web3ModalRef.current = new Web3Modal({
-        network: "goerli",
+        network: "rinkeby",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -285,8 +285,8 @@ export default function Home() {
   }, [walletConnected]);
 
   /*
-      renderButton: Returns a button based on the state of the dapp
-    */
+    renderButton: Returns a button based on the state of the dapp
+  */
   const renderButton = () => {
     // If wallet is not connected, return a button which allows them to connect their wllet
     if (!walletConnected) {
